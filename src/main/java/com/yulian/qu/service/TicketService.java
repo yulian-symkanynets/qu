@@ -35,9 +35,9 @@ public class TicketService {
     public String createTicket(Long id) {
         Ticket ticket = new Ticket();
         ticket.setTicketState(TicketState.WAITING);
-        Optional<ServiceQueue> serviceQueue = serviceQueueRepository.findById(id);
-        serviceQueue.ifPresent(ticket::setServiceQueue);
-        ticket.setNumber(20);
+        ServiceQueue serviceQueue = serviceQueueRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("ServiceQueue not fond"));
+        ticket.setNumber((int) (Math.random() * 100));
         ticketRepository.save(ticket);
         return "Ticket with " + ticket.getId() + " is created";
     }

@@ -16,28 +16,28 @@ public class TicketController {
         this.ticketService = ticketService;
     }
 
-    @GetMapping
-    public String getTicketStatus(Long id){
+    @GetMapping()
+    public String getTicketStatus(@RequestParam Long id) {
         return ticketService.ticketStatus(id);
     }
 
     @GetMapping("/all")
-    public List<Ticket> getAllTickets(){
+    public List<Ticket> getAllTickets() {
         return ticketService.allTickets();
     }
 
-    @PutMapping
-    public String createTicket(Long id){
-        return ticketService.createTicket(id);
+    @PostMapping()
+    public String createTicket(@RequestParam Long id) {
+            return ticketService.createTicket(id);
     }
 
     @GetMapping("/next")
-    public Ticket getNextTicket(){
+    public Ticket getNextTicket() {
         return ticketService.getNextTicket();
     }
 
-    @PostMapping()
-    public String calledNextTicket(Long id){
+    @PutMapping()
+    public String calledNextTicket(@RequestParam Long id) {
         return ticketService.callTicket(id);
     }
 

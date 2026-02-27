@@ -9,6 +9,8 @@ public class Ticket {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @Enumerated
+    @Column(nullable = false)
     private TicketState ticketState;
 
     @ManyToOne

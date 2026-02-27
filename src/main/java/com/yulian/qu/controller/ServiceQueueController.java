@@ -18,7 +18,7 @@ public class ServiceQueueController {
     }
 
     @GetMapping()
-    public ServiceQueue getService(Long id){
+    public ServiceQueue getService(@RequestParam Long id){
         return serviceQueue.getServiceQueueById(id);
     }
 
@@ -27,8 +27,8 @@ public class ServiceQueueController {
        return serviceQueue.getAll();
     }
 
-    @PostMapping
-    public String createService(String serviceName){
+    @PostMapping()
+    public String createService(@RequestParam String serviceName){
         serviceQueue.newService(serviceName);
         return serviceName + " is created";
     }
